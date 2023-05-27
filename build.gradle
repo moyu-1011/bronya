@@ -1,0 +1,44 @@
+buildscript {
+    repositories {
+        mavenLocal()
+        maven { url 'https://maven.aliyun.com/repository/public' }
+        mavenCentral()
+    }
+}
+
+plugins {
+    id 'org.jetbrains.kotlin.jvm' version '1.7.10'
+    id 'org.jetbrains.kotlin.plugin.serialization' version '1.7.10'
+    id 'net.mamoe.mirai-console' version '2.15.0-M1'
+}
+
+group = 'moe.moyu'
+version = '0.1.0'
+
+apply plugin: 'java'
+apply plugin: 'application'
+
+dependencies {
+    api fileTree(dir: 'libs', includes: ['*.jar'])
+    api group: 'net.mamoe', name: 'mirai-console-terminal', version: '2.15.0-M1'
+    api group: 'net.mamoe', name: 'mirai-core-jvm', version: '2.15.0-M1'
+    implementation group: 'org.xerial', name: 'sqlite-jdbc', version: '3.41.2.1'
+    compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.24'
+    annotationProcessor group: 'org.projectlombok', name: 'lombok', version: '1.18.24'
+    implementation group: 'com.zaxxer', name: 'HikariCP', version: '3.4.5'
+    implementation group: 'com.squareup.okhttp3', name: 'okhttp', version: '4.10.0'
+    implementation group: 'cn.hutool', name: 'hutool-all', version: '5.8.15'
+    implementation group: 'org.json', name: 'json', version: '20220924'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+}
+
+repositories {
+    mavenLocal()
+    maven { url 'https://maven.aliyun.com/repository/public' }
+    mavenCentral()
+}
+
+test {
+    useJUnitPlatform()
+}
