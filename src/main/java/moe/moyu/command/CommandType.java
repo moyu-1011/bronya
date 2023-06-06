@@ -31,7 +31,7 @@ public enum CommandType {
      * @return 指令类型 {@link CommandType}
      */
     public static CommandType type(String text) {
-        String keyword = Command.extractKeyWord(text, CommandType.FETCH_ALL);
+        String keyword = Command.extractKeyword(text, CommandType.FETCH_ALL);
         boolean isKeyOfSearchAll = ObjectUtil.equal(keyword, Constant.FETCH_ALL_KEY);
         boolean isSearchCache = ObjectUtil.equal(keyword, Constant.FETCH_CACHE);
         boolean isClearCache = ObjectUtil.equal(keyword, Constant.CLEAR_CACHE);

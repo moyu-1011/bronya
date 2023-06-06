@@ -104,7 +104,7 @@ public class FriendEventManager {
      * 持久化到数据库, 撤销预保存命令
      *
      * @param friend        好友
-     * @param imageList   存储对象
+     * @param imageList     存储对象
      * @param clearCacheImg 是否清空缓存
      */
     private static void persistImagesWithKey(Friend friend, List<Image> imageList, boolean clearCacheImg) {
@@ -133,7 +133,7 @@ public class FriendEventManager {
 
                 // 多条保存指令, 第一条有效
                 if (ObjectUtil.equal(commandType, CommandType.SAVE) && keyWord == null) {
-                    keyWord = Command.extractKeyWord(plainText, CommandType.SAVE);
+                    keyWord = Command.extractKeyword(plainText, CommandType.SAVE);
                 }
             }
             // 图片
@@ -164,7 +164,7 @@ public class FriendEventManager {
         CommandType type = CommandType.type(plainText);
         if (type == null) return;
 
-        String keyword = Command.extractKeyWord(plainText, type);
+        String keyword = Command.extractKeyword(plainText, type);
         Command command = commandStrategy.get(type);
 
         if (command instanceof Save) {
@@ -196,7 +196,7 @@ public class FriendEventManager {
      */
     private static String extractPlainText(SingleMessage singleMessage) {
         String plainText = null;
-        if (singleMessage instanceof PlainText){
+        if (singleMessage instanceof PlainText) {
             Command.isCommand(plainText = ((PlainText) singleMessage).getContent());
         }
         return plainText;
@@ -209,7 +209,7 @@ public class FriendEventManager {
      * @return 用户消息
      */
     private static SingleMessage extractSingleMessage(MessageChain messageChain) {
-        if (messageChain == null || messageChain.size() < 2){
+        if (messageChain == null || messageChain.size() < 2) {
             return null;
         }
         return messageChain.get(1);

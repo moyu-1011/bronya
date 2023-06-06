@@ -21,7 +21,7 @@ public abstract class Command {
 
     abstract CommandType getCommandType();
 
-    abstract public void execute(User user, List<Image> imageList, String keyWord);
+    abstract public void execute(User user, List<Image> imageList, String keyword);
 
     /**
      * 文本消息是不是指令
@@ -55,7 +55,7 @@ public abstract class Command {
      * @param type    指令类型
      * @return 关键字
      */
-    public static String extractKeyWord(String command, CommandType type) {
+    public static String extractKeyword(String command, CommandType type) {
         return command.substring(type.getSign().length());
     }
 }

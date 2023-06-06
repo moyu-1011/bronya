@@ -23,7 +23,7 @@ public class DeleteByKeyword extends Command{
     }
 
     @Override
-    public void execute(User user, @Nullable List<Image> imageList, String keyWord) {
-        imageDao.delete(user.getId(), keyWord);
+    public void execute(User user, @Nullable List<Image> imageList, String keyword) {
+        imageDao.delete(user.getId(), keyword);
     }
 }

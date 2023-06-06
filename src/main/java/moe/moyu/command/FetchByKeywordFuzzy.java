@@ -24,6 +24,6 @@ public class FetchByKeywordFuzzy extends Command {
     @Override
     public void execute(User user, List<Image> imageList, String keyWord) {
         List<Image> images = imageDao.fetchObjectFuzzy(user.getId(), keyWord);
-        MessageSender.sendForwardMessage(user, images);
+        MessageSender.send(user, images);
     }
 }

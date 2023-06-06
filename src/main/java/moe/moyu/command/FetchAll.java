@@ -22,8 +22,8 @@ public class FetchAll extends Command {
     }
 
     @Override
-    public void execute(User user, List<Image> imageList, String keyWord) {
+    public void execute(User user, List<Image> imageList, String keyword) {
         List<Image> images = imageDao.fetchAll(user.getId());
-        MessageSender.sendForwardMessage(user, images);
+        MessageSender.send(user, images);
     }
 }

@@ -10,7 +10,7 @@ import java.util.List;
 
 public class MessageSender {
 
-    public static void sendForwardMessage(User user, List<Image> imageList) {
+    public static void send(User user, List<Image> imageList) {
         boolean isImageEmpty = imageList == null || imageList.size() < 1;
         if (isImageEmpty) {
             user.sendMessage(Constant.STORAGE_NOT_FOUND);

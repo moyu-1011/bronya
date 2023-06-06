@@ -28,7 +28,7 @@ public class FetchCache extends Command{
         List<net.mamoe.mirai.message.data.Image> imageList = PersistCache.get();
         String cacheKey = PersistCache.getCacheKey();
         List<Image> images = ObjectConverter.toImageList(imageList, user.getId(), cacheKey);
-        MessageSender.sendForwardMessage(user, images);
+        MessageSender.send(user, images);
     }
 
 }

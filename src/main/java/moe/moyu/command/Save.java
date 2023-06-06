@@ -23,7 +23,7 @@ public class Save extends Command {
     }
 
     @Override
-    public void execute(User user, List<Image> imageList, @Nullable String keyWord) {
+    public void execute(User user, List<Image> imageList, @Nullable String keyword) {
         imageDao.persist(user.getId(), imageList);
     }
 

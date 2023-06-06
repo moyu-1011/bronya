@@ -22,8 +22,8 @@ public class FetchByKeywordExact extends Command {
     }
 
     @Override
-    public void execute(User user, List<Image> imageList, String keyWord) {
-        List<Image> images = imageDao.fetchObject(user.getId(), keyWord);
-        MessageSender.sendForwardMessage(user, images);
+    public void execute(User user, List<Image> imageList, String keyword) {
+        List<Image> images = imageDao.fetchObject(user.getId(), keyword);
+        MessageSender.send(user, images);
     }
 }

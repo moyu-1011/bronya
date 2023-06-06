@@ -11,19 +11,19 @@ import java.util.Map;
 
 public class ObjectConverter {
 
-    public static Image toImage(net.mamoe.mirai.message.data.Image image, Long ownerId, String keyWord) {
+    public static Image toImage(net.mamoe.mirai.message.data.Image image, Long ownerId, String keyword) {
         Image storage = new Image();
         storage.setOwnerId(ownerId);
-        storage.setKeyword(keyWord);
+        storage.setKeyword(keyword);
         storage.setImageUrl(net.mamoe.mirai.message.data.Image.queryUrl(image));
         storage.setImageId(image.getImageId());
         return storage;
     }
 
-    public static List<Image> toImageList(List<net.mamoe.mirai.message.data.Image> imageList, Long ownerId, String keyWord) {
+    public static List<Image> toImageList(List<net.mamoe.mirai.message.data.Image> imageList, Long ownerId, String keyword) {
         List<Image> storageList = new ArrayList<>();
         for (net.mamoe.mirai.message.data.Image image : imageList) {
-            Image storage = toImage(image, ownerId, keyWord);
+            Image storage = toImage(image, ownerId, keyword);
             storageList.add(storage);
         }
         return storageList;
