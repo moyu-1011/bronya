@@ -1,5 +1,6 @@
 package moe.moyu.command;
 
+import moe.moyu.cache.CurrentUser;
 import moe.moyu.dao.ImageDao;
 import moe.moyu.entity.Image;
 import moe.moyu.util.MessageSender;
@@ -22,7 +23,8 @@ public class FetchAll extends Command {
     }
 
     @Override
-    public void execute(User user, List<Image> imageList, String keyword) {
+    public void execute() {
+        User user = CurrentUser.get();
         List<Image> images = imageDao.fetchAll(user.getId());
         MessageSender.send(user, images);
     }

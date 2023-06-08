@@ -1,5 +1,7 @@
 package moe.moyu.command;
 
+import moe.moyu.cache.CurrentUser;
+import moe.moyu.cache.PersistCacheHolder;
 import moe.moyu.dao.ImageDao;
 import moe.moyu.entity.Image;
 import moe.moyu.util.MessageSender;
@@ -22,8 +24,10 @@ public class FetchByKeywordFuzzy extends Command {
     }
 
     @Override
-    public void execute(User user, List<Image> imageList, String keyWord) {
-        List<Image> images = imageDao.fetchObjectFuzzy(user.getId(), keyWord);
+    public void execute() {
+        User user = CurrentUser.get();
+        PersistCacheHolder.PersistCache cache = PersistCacheHolder.getCache();
+        List<Image> images = imageDao.fetchObjectFuzzy(user.getId(), cache.getCacheKey());
         MessageSender.send(user, images);
     }
 }

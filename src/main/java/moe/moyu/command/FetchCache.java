@@ -1,6 +1,7 @@
 package moe.moyu.command;
 
-import moe.moyu.cache.PersistCache;
+import moe.moyu.cache.CurrentUser;
+import moe.moyu.cache.PersistCacheHolder;
 import moe.moyu.dao.ImageDao;
 import moe.moyu.entity.Image;
 import moe.moyu.util.ObjectConverter;
@@ -24,10 +25,11 @@ public class FetchCache extends Command{
     }
 
     @Override
-    public void execute(User user, List<Image> storageList, String keyWord) {
-        List<net.mamoe.mirai.message.data.Image> imageList = PersistCache.get();
-        String cacheKey = PersistCache.getCacheKey();
-        List<Image> images = ObjectConverter.toImageList(imageList, user.getId(), cacheKey);
+    public void execute() {
+        PersistCacheHolder.PersistCache persistCache = PersistCacheHolder.getCache();
+        List<net.mamoe.mirai.message.data.Image> imageList = persistCache.get();
+        User user = CurrentUser.get();
+        List<Image> images = ObjectConverter.toImageList(imageList, user.getId(), persistCache.getCacheKey());
         MessageSender.send(user, images);
     }
 

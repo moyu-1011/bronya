@@ -2,10 +2,6 @@ package moe.moyu.command;
 
 import moe.moyu.constant.Constant;
 import moe.moyu.dao.ImageDao;
-import moe.moyu.entity.Image;
-import net.mamoe.mirai.contact.User;
-
-import java.util.List;
 
 /**
  * 抽象命令类
@@ -21,7 +17,7 @@ public abstract class Command {
 
     abstract CommandType getCommandType();
 
-    abstract public void execute(User user, List<Image> imageList, String keyword);
+    abstract public void execute();
 
     /**
      * 文本消息是不是指令
